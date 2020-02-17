@@ -1,0 +1,42 @@
+stages:
+  - build
+  - test
+  - deploy
+
+services:
+  - docker:dind
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+
+build:
+  stage: build
+  script:
+    - export DOCKER_HOST="tcp://localhost:2375"
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+
+test:
+  stage: test
+  script:
+    - export DOCKER_HOST="tcp://localhost:2375"
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker run --entrypoint "run-tests.sh" $IMAGE_TAG
+
+deploy:
+  stage: deploy
+  image: python
+  environment:
+    name: fupp-api-dev
+    url: http://fupp-api-dev.devserver.london
+  only:
+  - david
+  variables:
+    EB_ENV: "fupp-api-dev"
+  script:
+  - pip install awscli
+  - apt-get update
+  - apt-get install -y zip
+  - chmod +x ./bin/deploy.sh
+  - ./bin/deploy.sh

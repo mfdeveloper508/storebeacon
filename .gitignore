@@ -1,0 +1,8 @@
+# ide
+.idea
+
+# tmp
+tmp
+
+# os
+.DS_Store

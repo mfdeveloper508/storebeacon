@@ -1,0 +1,30 @@
+<div class="qor-layout__sidebar">
+
+  <div class="sidebar-header">
+    <a id="logo-link" href="/admin">
+      <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAaCAYAAABSHbkRAAAABHNCSVQICAgIfAhkiAAABXlJREFUaIHtmmmIVWUYx3//c09jmksYZUjaphaUlZb1wUAqMCgSMUWNSosWiiSbueG3mow20jHbCG0vCirKxoyIFrGFwKJCWyhNlAzLpcyldM69/z6ccy3Hu5y5cyZnot+X5573PM//fc59zvKehyOq4Fn0LzRwCWKKzXDBYGAAsNWwUeJL4JXc77ylRbRV0/qfbFC5QTcTFndyk82diL41VcwWwYIg5BHdx/a0k9tuALZCijkOZJCkX/6h9TNwVPvxGvMfD6wFNksaVMFnGXBRCrltwNtAi6SVVeZ8DLg+hd5O4B1gsaQ3S4PhAYJ5jop28JbEKASYbcAKifcDWM56vmIowwswynAG4hyJcYa7CgVm+1Yu1f18kCIhgCCxRUgdA5ArM1ZIbO8O6ITEJ221u8PuxK4mPrnK5XIaMBCYBky2/bikGyro/ZHYtcCPZfYLOAU4ApgITLS9BJgiKdrP040MiZpYF+VxlKetLc9cNx9Y1PZEjUyImtgc5XHURBTluapWDIDtQ23vsL3b9mFpYqpo/eSYYzsQMzyJKffHlXxeTnwqFQDbsj3S9sLkeGz70Qq+C5L9d6fI7Q7bvyT+rfD3GY6vo09BvIc4DrMmV+SsQ+Zxm5qJKsvGhC205ho4GfMiIodZ3NbIebXi/itIsqRVkm4mvsoArrR9Yic0v5d0OzAO2ANcbHv8voIV+vEMYpjNJ7l+jFQLX3ZognvYGs7nMsxDiJzEEs9haL0J91QkLQNagcOAmRnofQM8QXxxXRYARHkuQUwGorDIFWrmz3onyG3gFpuPEf0LEfd2NuEeykeJPTNrvcDNBDbzAARztYA1nVHWyxRCcxWmgJjuRkZ1Ot2exw+JHZiR3hclvYAdnCsxwubroC/3ZKGuFr4DngEoiFuy0OxhHJ7YP6p6pWdwSS+I4GKAIOCpNAuMtBheAkBckJVmD+KkxG7ISO+0kl4gcRaAi527FbYn7Mf7mDZgsG+s68W4R2K7PzAh2XwnA70QmJRsvhvgeCWXU7YFUzN7gU0A9OHILLW7K7ZHA88BI4DPgOc7qXcC8DQwFlgPPBACxwOwh+87I152QrFZMAQzEFhXxbU3sNN2GtkrJHXqj6iTMbZ7lRkPgNMTOw4YQryqmyGp2gGdZHt2hX2nAr2AMcS319XANZJ2hShu8+gh9tR3HJWRGYaAIr/WcC0Cq1LKlmsP/Ruk6d6sAl4A5knaUsN3En/f6iqxBniYuD+5Dsr0ErPCjYwoiP4ADKj58N0DjJW0q6vyyYCnoWozYRvQKum3lHqvASuq7N8FLJW06Z+DXVawghgDYFid5erzILJSUtn+YJ18J+mBjgYFtV3qw+Ls5OfSrpqjHaVufZ8OxJR8ixnn0mV0ScE8h6GCGQBhkdaumKMMpWfb4Kpe+3NMu9huT+YF8yx6RRFvAANsPlQLn2Q9RwW+TezZVb32Z3S72G5P5gUrNPCUxEhgbwiXZ61fheWJnWn70FrOic+VyeZ7XZZVxmRWMM/iyKiJ1xHTgSJmquazPiv9FDxJvIobAaR5mD8IDAM+BR7vwrwyJZOCRXmmFRr4FjEB04aZGc5nSRbaaZG0F5gN/AZcb3uR7QM6LLYH2V4MXEu8FJ9Z4wW3W1HXsj75mup8xHji5vHQ5HOeDTkzUS18nmGOqZG03PZk4EXiglxt+3NgJfG3GcOA8cSdlS3AVElfHYxc62Vfwdry+54B1TG9C3BmqUOSjLVZLAyhWS0c1JdfSe/aPh24nbg4oyFucAN7gY+JC7hQ0saDk2X9KGpiE6LsJ161MKzGvBoGPKv7WZt1cllguy9wIfF72tuSdtcI6dbIt3J0ZE5OGxCaiICf2c5GLaJHH3xP5C+k5hDVZrzVdAAAAABJRU5ErkJggg==">
+    </a>
+  </div>
+
+  <div class="sidebar-userinfo">
+    {{if .CurrentUser}}
+      <div>
+        <h5>{{.CurrentUser.DisplayName}}</h5>
+      </div>
+    {{end}}
+    <a class="mdl-button mdl-js-button mdl-button--icon" href="{{logout_url}}" title="{{t "qor_admin.account.logout" "logout"}}" alt="{{t "qor_admin.account.logout" "logout"}}"><i class="material-icons">exit_to_app</i></a>
+  </div>
+
+  <div class="sidebar-body">
+    <div class="qor-menu-container">
+      {{if .GetSearchableResources }}
+        <div qor-icon-name="Search">
+          <span class="qor-global-search--show {{if (eq .Action "search_center")}}active{{end}}" data-placeholder="{{t "qor_admin.search_center.hint" "Search…"}}" data-action-url="{{search_center_path}}">{{t "qor_admin.search_center.title" "Search Center" }}</span>
+        </div>
+      {{end}}
+
+      {{render "shared/menu" get_menus}}
+    </div>
+  </div>
+
+</div>

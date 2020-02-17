@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Authentication": {
+    "Bucket": "<BUCKET>",
+    "Key": "<PREFIX>/dockercfg"
+  },
+  "Image": {
+    "Name": "<IMAGE>"
+  },
+  "Ports": [{
+    "ContainerPort": "8080"
+  }]
+}

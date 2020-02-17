@@ -1,0 +1,32 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* ADMIN SIDEBAR */
+.qor-layout__sidebar .sidebar-header, .qor-layout__sidebar .sidebar-userinfo {
+    background: #000001;
+    color: #ffffff;
+}
+.qor-layout__sidebar .sidebar-body {
+    bottom: 0;
+}
+.qor-layout__sidebar #logo-link {
+    background: none;
+    float: none;
+    width: 100%;
+    text-align: center;
+    padding: 22px 0;
+}
+.qor-layout__sidebar #logo-link img {
+    width: 50%;
+}
+
+/* DASHBOARD */
+.dashboard {
+    position: relative;
+}
+
+/* EDIT SLIDER */
+@media (min-width: 1024px) {
+    .qor-slideout.is-slided {
+        width: 75%;
+    }
+}

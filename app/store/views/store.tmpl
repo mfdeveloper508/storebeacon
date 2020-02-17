@@ -1,0 +1,116 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Store Information
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Store Information</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <br/>
+      <br/>
+      <div class="row">
+        <div class="col-md-1"> </div>
+        <div class="col-md-10">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <!-- /.box-header -->
+            <br/>
+            <br/>
+            <form id="store_register_form" class="form-horizontal" action="/store/register/" method="GET">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputStoreTitle" class="col-sm-3 control-label">Title</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" name="title" placeholder="Title" value="{{.Store.Title}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStoreEmail" class="col-sm-3 control-label">Email</label>
+                  <div class="col-sm-7">
+                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{.Store.Email}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStorePassword" class="col-sm-3 control-label">Password</label>
+                  <div class="col-sm-7">
+                    <input type="password" class="form-control" name="password" placeholder="Password" value="{{.Store.Password}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStoreDescription" class="col-sm-3 control-label">Description</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" name="description" placeholder="Description" value="{{.Store.Description}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStoreAddress" class="col-sm-3 control-label">Address</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" name="address" placeholder="Address" value="{{.Store.Address}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStoreLatitude" class="col-sm-3 control-label">Latitude</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" name="latitude" placeholder="Latitude" value="{{.Store.Latitude}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStoreLongitude" class="col-sm-3 control-label">Longitude</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" name="longitude" placeholder="Longitude" value="{{.Store.Longitude}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputStoreLongitude" class="col-sm-3 control-label">Upload Image</label>
+                  <div class="col-sm-7">
+                    <label class="btn btn-info">
+                        <input type="file"/ style="display: none;" class="form-control" name="file" id="storeImage" accept="image/png, image/jpeg">
+                        Image Upload
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" class="form-control" name="id" id="storeId" value="{{.Store.ID}}"/>
+              <div class="box-footer">
+                <div class="col-sm-offset-3 col-sm-7" data-toggle="modal" data-target="#modal-edit">
+                    <button type="button" class="btn btn-info">Save</button>
+                </div>
+              </div>
+            </form>
+
+            <br/>
+            <br/>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+        <div class="modal modal-info fade" id="modal-edit">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Do you want to modify the store information?</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline" id="store_register_submit" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+    </section>
