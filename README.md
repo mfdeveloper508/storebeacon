@@ -1,4 +1,4 @@
-## FUPP CMS & API
+## STORE BEACON CMS & API
 
 
 #### Setup
